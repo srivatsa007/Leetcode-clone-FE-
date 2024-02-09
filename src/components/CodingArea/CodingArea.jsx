@@ -10,16 +10,16 @@ function CodingArea() {
   const data = useLocation().pathname.split("/");
   const index = data[data.length - 2];
   const name = data[data.length - 1].toLowerCase();
-
+  const [popup, setpopup] = useState(false);
   const Problem = ProblemsList[index].name;
   return (
     <>
-        <Navbar pagination={true}></Navbar>
+      <Navbar pagination={true} setpopup={setpopup}></Navbar>
 
-        <Split className="split overflow-x-hidden" minSize={0}>
-            <Description Problem={Problem} />
-            <CodeEditor Problem={Problem} />
-        </Split>
+      <Split className="split overflow-x-hidden" minSize={0}>
+        <Description Problem={Problem} />
+        <CodeEditor Problem={Problem} />
+      </Split>
     </>
   );
 }

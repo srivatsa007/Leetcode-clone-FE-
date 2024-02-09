@@ -15,14 +15,17 @@ const ProblemSet = () => {
   const [myList, setMyList] = useState(list);
   return (
     <>
-      <Navbar pagination={false}/>
+      <Navbar pagination={false} />
 
       {/* table */}
-      <div className="flex border items-center flex-col h-[93.5vh] bg-gray-100 pt-8">
-        <div className="font-bold text-5xl font-serif mb-12 mt-8">
+      <div className=" hero flex border items-center flex-col h-[93.5vh] bg-base-300 pt-8">
+        <div className="font-bold text-5xl font-serif mb-8 mt-4">
           Problem Set
         </div>
-        <div className="w-2/3 h-full border pl-4 pr-4">
+        <div
+          className="w-2/3 h-fit min-h-96 py-8 rounded-xl
+         bg-opacity-50  bg-white backdrop-blur-lg pl-4 pr-4"
+        >
           <div className="w-full flex px-4 text-xl font-bold">
             <div className="w-2/5">STATUS</div>
             <div className="w-full">NAME</div>
@@ -33,11 +36,11 @@ const ProblemSet = () => {
           {myList.map((problem, index) => (
             <div className="w-full flex px-4" key={index}>
               {index % 2 == 1 ? (
-                <div className="bg-gray-300 py-2 w-full flex h-full">
+                <div className="bg-gray-700 py-2 w-full flex h-full rounded-xl">
                   <div className="w-2/5 font-semibold pl-2">
                     <BsCheckCircle color="blue" fontSize={"18"} width={"18"} />
                   </div>
-                  <div className="w-full pl-2">
+                  <div className="w-full pl-2 flex">
                     <div className="max-w-max">
                       <Link
                         to={`/problems/${index}/${problem.name.name
