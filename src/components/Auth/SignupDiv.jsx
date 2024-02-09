@@ -1,18 +1,26 @@
 import { useRef, useState } from "react";
-import { useAuth } from "../../context/AuthProvider";
+import { useAuth } from "../../context/AuthContext";
         
         
         
         const SignupDiv = () =>{
             const authCtx = useAuth();
+
+            //use ref for each input 
+            //or
+
+            //make a state for all of inputs and change them using "onchange" at the jsx tag of input.
             const emailRef = useRef();
             const passRef = useRef();
             const confrimPassRef = useRef();
+            const [inputs, setInputs] = useState({ email: "", displayName: "", password: "" });
 
+            //registering process, checks if pass and conf pass are same
             async function handleSubmit(e) {
               e.preventDefault();
               if (passRef.current.value !== confrimPassRef.current.value) {
-                setError("Password and Confirm Password do not Match");
+                alert("The passwords don't match! tch tch...")
+                return 
               }
               try {
                 const response = await authCtx.signUp(
@@ -21,12 +29,13 @@ import { useAuth } from "../../context/AuthProvider";
                 );
                 console.log(response);
                 alert("You have successfully registered");
-                nav("/layout/signin");
+                nav("/layout/signup");
               } catch (error) {
                 alert(error);
               }
             }
-            const handleInputChange = (e) => {
+
+            const handleChangeInput = (e) => {
                 setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
             };
             
@@ -60,7 +69,6 @@ import { useAuth } from "../../context/AuthProvider";
                             Password
                         </label>
                         <input
-                            onChange={handleInputChange}
                             type='password'
                             name='password'
                             id='password'
@@ -78,7 +86,7 @@ import { useAuth } from "../../context/AuthProvider";
                     text-sm px-5 py-2.5 text-center bg-brand-orange hover:bg-brand-orange-s
                 '
                     >
-                        {loading ? "Registering..." : "Register"}
+                        {/* {loading ? "Registering..." : "Register"} */}
                     </button>
         
                     <div className='text-sm font-medium text-gray-300'>

@@ -4,7 +4,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 // import viteLogo from '/vite.svg'
 import Navbar from './components/Header/Navbar'
 import Hero from './components/Hero/Hero'
+import ProblemSet from './components/Problems/ProblemsListPage/ProblemSet'
 import SigninLayout from './components/Auth/SigninLayout'
+import CodingArea from "./components/CodingArea/CodingArea"
 import './App.css'
 import AuthProvider from './Context/AuthContext'
 
@@ -23,9 +25,18 @@ function App() {
           path='/'
           element = {<Hero/>}
         />
+        
         <Route
           path='/layout/:loginOption'
           element = {<SigninLayout/>}
+        />
+        <Route
+          path='/ProblemSet'
+          element = {<ProblemSet/>}
+        />
+        <Route
+          path='/Problems/:id/:name'
+          element = {<CodingArea/>}
         />
 
         {/* <div className="App">

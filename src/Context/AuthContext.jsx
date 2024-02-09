@@ -9,6 +9,7 @@ import {
 const AuthContext = createContext();
 
 export const useAuth = () => {
+  
   return useContext(AuthContext);
 };
 
