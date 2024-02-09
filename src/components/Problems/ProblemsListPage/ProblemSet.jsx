@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { list } from "../../Problems/ProblemList";
+import { list } from "../ProblemList";
 import { useState } from "react";
 import Navbar from "../../Header/Navbar";
 import { BsCheckCircle } from "react-icons/bs";

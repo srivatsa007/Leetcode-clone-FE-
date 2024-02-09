@@ -1,21 +1,46 @@
 import Split from "react-split";
-import PreferanceNav from "./preferanceNav/PreferenceNav";
+import LanguageSelector from "./LanguageSelector";
 import CodeMirror from "@uiw/react-codemirror";
 import { bbedit, bbeditInit } from "@uiw/codemirror-theme-bbedit";
 import { javascript } from "@codemirror/lang-javascript";
-import EditorFooter from "./editorfooter";
+import CodeEditorFooter from "./CodeEditorFooter";
 import { useRef, useState, useEffect } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../../firebase";
 
 function CodeEditor({ Problem }) {
+  if (!localStorage.getItem(Problem.id)) {
+    localStorage.setItem(Problem.id, Problem.starterCode);
+  }
+  const [user] = useAuthState(auth);
   const [caseNumber, setCaseNumber] = useState(1);
-  const [inputCode, setInputCode] = useState(Problem.starterCode);
+  const inputCode = useRef(Problem.starterCode);
   function handleOnChange(newValue) {
     localStorage.setItem(Problem.id, newValue);
   }
-
+  const handleSubmit = async () => {
+    if (!user) {
+      alert("Please login to submit your code");
+      return;
+    }
+    try {
+      const cb = new Function(`return ${localStorage.getItem(Problem.id)}`)();
+      // console.log(cb, typeof cb);
+      const result = Problem.handlerFunction(cb);
+      // const result = Problem.handlerFunction(cb);
+      if (result) {
+        alert("Congratulations! All tests passed");
+        localStorage.setItem(`status_${Problem.id}`, "yes");
+      } else {
+        alert("Wrong answer");
+      }
+    } catch (error) {
+      alert(error);
+    }
+  };
   return (
     <div className="min-w-0 mb-2 bg-white m-2 ml-0.5 rounded-md">
-      <PreferanceNav Problem={Problem} setInputCode={setInputCode} />
+      <LanguageSelector Problem={Problem} />
       <Split
         className="splitver h-[calc(100vh-160px)]"
         direction="vertical"
@@ -70,7 +95,7 @@ function CodeEditor({ Problem }) {
           </div>
         </div>
       </Split>
-      <EditorFooter />
+      <CodeEditorFooter handleSubmit={handleSubmit} />
     </div>
   );
 }

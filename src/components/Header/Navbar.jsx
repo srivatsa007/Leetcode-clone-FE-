@@ -73,11 +73,11 @@ const Navbar = ({ pagination }) => {
             </div> */}
       <div className="flex-1 w-fit text-left ">
         <Link to="/">
-          <div className="h-full">
+          <div className="h-full bg-slate-200 p-1 rounded-lg">
             <img
               src="https://imgs.search.brave.com/n4F8ExAGY_kzINgXKS-61UqT5-BZuFWlPse_LGolyP4/rs:fit:500:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy8w/LzBhL0xlZXRDb2Rl/X0xvZ29fYmxhY2tf/d2l0aF90ZXh0LnN2/Zw.svg"
               alt=""
-              className="h-[2rem] text-white"
+              className="h-[2rem] text-white  "
             />
           </div>
         </Link>
@@ -137,9 +137,9 @@ const Navbar = ({ pagination }) => {
 
         {/* new login/ user profile */}
         {!user && (
-          <div>
-            <div className="dropdown dropdown-end">
-              <label className="swap swap-rotate">
+          <div className="flex align-middle items-center justify-center w-fit">
+            <div className="dropdown dropdown-end ">
+              <label className="swap swap-rotate mx-4">
                 {/* this hidden checkbox controls the state */}
                 <input
                   type="checkbox"
@@ -169,7 +169,7 @@ const Navbar = ({ pagination }) => {
               {/* </div> */}
             </div>
             <button
-              className="bg-secondary text-white p-1.5 px-3 rounded font-semibold text-sm hover:bg-white border-blue-800 hover:text-blue-800 transition ease-in-out duration-300"
+              className="bg-secondary border-4 border-white text-white p-1.5 px-3 rounded font-semibold text-sm hover:bg-white border-blue-800 hover:text-blue-800 transition ease-in-out duration-300"
               onClick={() => setpopup(true)}
             >
               Sign Up

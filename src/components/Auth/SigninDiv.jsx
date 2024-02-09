@@ -65,7 +65,7 @@ const LoginDiv = ({ setReg, setpopup }) => {
 
       <button
         type="submit"
-        className="w-full text-white focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center bg-brand-orange hover:bg-brand-orange-s"
+        className="w-full text-xl text-white border-white focus:ring-blue-300 hover:ring-blue-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:bg-accent-orange-s"
         disabled={loading}
       >
         {loading ? "Logging in..." : "Log in"}

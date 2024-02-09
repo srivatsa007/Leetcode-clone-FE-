@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import bkgImg from "../../assets/hero-wallpaper.jpg";
 import Navbar from "../Header/Navbar";
 import LoggingPopupLayout from "../Auth/SigninLayout";
 
@@ -12,20 +13,19 @@ const Hero = () => {
       <Navbar pagination={false} setpopup={setpopup} />
 
       <div
-        className="hero w-screen h-screen"
+        className="hero w-screen h-screen relative top-2 absolute"
         style={{
-          backgroundImage:
-            "url(https://img.freepik.com/free-vector/matrix-style-binary-code-digital-falling-numbers-blue-background_1017-37387.jpg?w=996&t=st=1707253110~exp=1707253710~hmac=f921f19e6f476098c440c93e51e511815596ec7689acccf6c5ced48c706ca75f)",
+          backgroundImage: `url(${bkgImg})`,
         }}
       >
-        <div className="hero-overlay bg-opacity-60 z-0"></div>
-        <div className="hero-content text-center text-neutral-content z-0">
+        <div className="hero-overlay bg-opacity-40 z-0 "></div>
+        <div className="hero-content text-center text-neutral-content z-0 absolute top-16 ">
           <div className="max-w-md">
-            <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
+            <h1 className="mb-5 text-5xl font-bold">Hello there! ✋</h1>
             <p className="mb-5">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
+              LeetCode is the best platform to help you enhance your skills,
+              expand your knowledge and prepare for technical interviews. In
+              deleniti eaque aut repudiandae et a id nisi.
             </p>
 
             <Link to="/ProblemSet">
